@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
-    "Method": "GetAllStudents",
+    "Method": "GetAll",
     "RelativePath": "api/Student",
     "HttpMethod": "GET",
     "IsController": true,
@@ -11,7 +11,7 @@
   },
   {
     "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
-    "Method": "Insert",
+    "Method": "Add",
     "RelativePath": "api/Student",
     "HttpMethod": "POST",
     "IsController": true,
@@ -27,12 +27,60 @@
   },
   {
     "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
-    "Method": "GetHello",
-    "RelativePath": "api/Student/hello",
+    "Method": "Edit",
+    "RelativePath": "api/Student",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student",
+        "Type": "OrbitaChallengeBackEnd.Models.Student",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
+    "Method": "Delete",
+    "RelativePath": "api/Student/delete/{ra}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ra",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
+    "Method": "GetBy",
+    "RelativePath": "api/Student/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OrbitaChallengeBackEnd.ViewModels.ResultViewModel\u00601[[OrbitaChallengeBackEnd.Models.Student, OrbitaChallengeBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
