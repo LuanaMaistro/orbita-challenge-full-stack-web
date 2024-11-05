@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging; // Para o ILogger
-using Moq; // Para usar o Moq
+using Microsoft.Extensions.Logging;
+using Moq; 
 using OrbitaChallengeBackEnd.Controllers;
 using OrbitaChallengeBackEnd.Data;
 using OrbitaChallengeBackEnd.Interfaces;
@@ -38,7 +38,6 @@ namespace OrbitaChallengeTest
         [Fact]
         public async Task InsertStudent_ShouldAddStudentToDatabase()
         {
-            // Arrange: Configura os dados de teste
             var student = new Student
             {
                 Name = "Estudante Teste",
@@ -50,11 +49,10 @@ namespace OrbitaChallengeTest
                 IsActive = true
             };
 
-            // Act: Chama o método de inserção no controlador
             await _studentController.Add(student);
 
             // Assert: Verifica se o estudante foi adicionado ao banco de dados
-            var result = await _context.Students.FirstOrDefaultAsync(s => s.Name == "Estudante Teste"); // Corrigido o nome
+            var result = await _context.Students.FirstOrDefaultAsync(s => s.Name == "Estudante Teste");
             Assert.NotNull(result);
             Assert.Equal("Estudante Teste", result.Name);
             Assert.Equal("estudante@email.com", result.Email);
@@ -93,7 +91,7 @@ namespace OrbitaChallengeTest
         [Fact]
         public async Task DeleteStudent_ShouldRemoveStudentFromDatabase()
         {
-            // Arrange: Adiciona um estudante ao banco de dados para depois excluí-lo
+
             var student = new Student
             {
                 Name = "Estudante a Ser Excluído",
@@ -108,22 +106,21 @@ namespace OrbitaChallengeTest
             await _context.SaveChangesAsync();
 
             // Act: Chama o método de exclusão no controlador
-            var result = await _studentController.Delete(student.Id);
+            var result = await _studentController.Delete(student.RA);
 
             // Assert: Verifica se o estudante foi removido do banco de dados
             Assert.IsType<OkResult>(result); // Confirma se o retorno foi um OkResult
-            var deletedStudent = await _context.Students.FindAsync(student.Id);
+            var deletedStudent = await _context.Students.FindAsync(student.RA);
             Assert.Null(deletedStudent); // Confirma que o estudante não está mais no banco
         }
 
         [Fact]
         public async Task DeleteStudent_ShouldReturnNotFoundForNonexistentStudent()
         {
-            // Act: Tenta excluir um estudante com um ID que não existe
-            var result = await _studentController.Delete(999); // ID fictício que não existe
 
-            // Assert: Verifica se o resultado é NotFound
-            Assert.IsType<NotFoundResult>(result); // Confirma que o retorno foi NotFound
+            var result = await _studentController.Delete("999"); // ID fictício que não existe
+
+            Assert.IsType<NotFoundResult>(result); 
         }
 
 
