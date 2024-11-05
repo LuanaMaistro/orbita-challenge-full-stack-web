@@ -1,12 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using OrbitaChallengeBackEnd.Data;
+using OrbitaChallengeBackEnd.Interfaces;
+using OrbitaChallengeBackEnd.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //MySQL
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(9, 0, 1)))); 
+        new MySqlServerVersion(new Version(9, 0, 1))));
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>(); 
+
 // Configurando CORS
 builder.Services.AddCors(options =>
 {
