@@ -44,6 +44,11 @@ namespace OrbitaChallengeBackEnd.Repositories;
                 return new ResultViewModel<bool>(false, "A student with this RA already exists.");
             }
 
+            if (!IsValidCPF(student.CPF))
+            {
+                return new ResultViewModel<bool>(false, "Invalid CPF");
+            }
+
             await _context.Students.AddAsync(student);
             await _context.SaveChangesAsync();
             return new ResultViewModel<bool>(true, "Student created successfully", true);
