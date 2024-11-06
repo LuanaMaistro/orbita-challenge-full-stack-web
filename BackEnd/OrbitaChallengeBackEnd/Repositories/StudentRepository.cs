@@ -35,19 +35,17 @@ namespace OrbitaChallengeBackEnd.Repositories;
     {
         try
         {
-            // Verifica se o RA já existe
-            var existingStudent = await _context.Students
-                .AnyAsync(s => s.RA == student.RA);
-
-            if (existingStudent)
-            {
+            if (await _context.Students.AnyAsync(s => s.RA == student.RA))
                 return new ResultViewModel<bool>(false, "A student with this RA already exists.");
-            }
+            
 
             if (!IsValidCPF(student.CPF))
-            {
                 return new ResultViewModel<bool>(false, "Invalid CPF");
-            }
+            
+
+            if (await _context.Students.AnyAsync(s => s.CPF == student.CPF))
+                return new ResultViewModel<bool>(false, "A student with this CPF already exists.");
+            
 
             await _context.Students.AddAsync(student);
             await _context.SaveChangesAsync();
@@ -65,7 +63,6 @@ namespace OrbitaChallengeBackEnd.Repositories;
         if (string.IsNullOrWhiteSpace(cpf))
             return false;
 
-        // Remove caracteres não numéricos
         cpf = cpf.Replace(".", "").Replace("-", "");
 
         if (cpf.Length != 11)
@@ -108,17 +105,17 @@ namespace OrbitaChallengeBackEnd.Repositories;
                 return new ResultViewModel<bool>(false, "Invalid CPF");
             }
 
+            if (await _context.Students.AnyAsync(s => s.CPF == updatedStudent.CPF && s.RA != updatedStudent.RA))
+                return new ResultViewModel<bool>(false, "A student with this CPF and another RA already exists.");
 
-            // Busca o estudante existente pelo RA
+
             var existingStudent = await _context.Students.FirstOrDefaultAsync(s => s.RA == updatedStudent.RA);
 
-            // Verifica se o estudante foi encontrado
-            if (existingStudent == null)
-            {
-                return new ResultViewModel<bool>(false, "Student not found");
-            }
 
-            // Atualiza as informações do estudante existente
+            if (existingStudent == null)
+                return new ResultViewModel<bool>(false, "Student not found");
+
+
             existingStudent.Name = updatedStudent.Name;
             existingStudent.Email = updatedStudent.Email;
             existingStudent.CPF = updatedStudent.CPF;

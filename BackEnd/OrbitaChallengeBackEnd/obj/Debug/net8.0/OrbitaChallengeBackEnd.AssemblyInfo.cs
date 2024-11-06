@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrbitaChallengeBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6701b2f0e3be133fb88312495d55802c3e2cec45")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf0f351c2011449c632d8f23352bc9b7902226f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrbitaChallengeBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrbitaChallengeBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

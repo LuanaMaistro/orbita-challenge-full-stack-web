@@ -22,7 +22,6 @@ namespace OrbitaChallengeBackEnd.Controllers
             _studentRepository = studentRepository;
         }
 
-        // GET: Students/GetAll
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -41,7 +40,6 @@ namespace OrbitaChallengeBackEnd.Controllers
             }
         }
 
-        // POST: api/students
         [HttpPost]
         public async Task<ActionResult> Add([FromBody] Student student)
         {
@@ -65,7 +63,6 @@ namespace OrbitaChallengeBackEnd.Controllers
 
         }
 
-        // POST: Students/Edit
         [HttpPost("edit")]
         public async Task<ActionResult> Edit([FromBody] Student student)
         {
@@ -113,7 +110,6 @@ namespace OrbitaChallengeBackEnd.Controllers
             }
         }
 
-        // POST: Students/Delete
         [HttpPost("delete/{ra}")]
         public async Task<IActionResult> Delete(string ra)
         {
