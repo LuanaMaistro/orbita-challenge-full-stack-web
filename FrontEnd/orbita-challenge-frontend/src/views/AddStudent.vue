@@ -17,7 +17,8 @@
                         </v-col>
                         <v-col>
                             <label class="form-label">CPF</label>
-                            <v-text-field v-model="cpf" placeholder="Informe o CPF" dense></v-text-field>
+                            <v-text-field v-model="cpf" v-mask="'###.###.###-##'" placeholder="Informe o CPF" dense></v-text-field>
+
                         </v-col>
                         <v-col>
                             <label class="form-label">Email</label>
@@ -65,7 +66,7 @@ export default {
             const studentData = {
                 Name: this.nome,
                 RA: this.ra,
-                CPF: this.cpf,
+                CPF: this.cpf.replace(/\D/g, ''),
                 Email: this.email,
             };
 

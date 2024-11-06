@@ -2,7 +2,8 @@
 
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';  // Certifique-se de que o caminho está correto
+import router from './router'; 
+import VueTheMask from 'vue-the-mask';
 
 // Importando o Vuetify
 import 'vuetify/styles';
@@ -17,7 +18,8 @@ const vuetify = createVuetify({
 
 const app = createApp(App);
 
-// Usando o Vuetify na aplicação
+
 app.use(vuetify);
-app.use(router); // Mover essa linha antes de app.mount
+app.use(router); 
+app.use(VueTheMask);
 app.mount('#app');
