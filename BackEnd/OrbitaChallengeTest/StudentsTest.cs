@@ -52,7 +52,7 @@ namespace OrbitaChallengeTest
             await _studentController.Add(student);
 
             // Assert: Verifica se o estudante foi adicionado ao banco de dados
-            var result = await _context.Students.FirstOrDefaultAsync(s => s.Name == "Estudante Teste");
+            var result = await _context.Students.FirstOrDefaultAsync(s => s.RA == "12345");
             Assert.NotNull(result);
             Assert.Equal("Estudante Teste", result.Name);
             Assert.Equal("estudante@email.com", result.Email);
