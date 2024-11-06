@@ -5,6 +5,8 @@ import App from './App.vue';
 import router from './router'; 
 import VueTheMask from 'vue-the-mask';
 import './main.css'; // Importa o CSS global
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 
 // Importando o Vuetify
