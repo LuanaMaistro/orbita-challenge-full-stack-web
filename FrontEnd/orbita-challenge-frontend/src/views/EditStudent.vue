@@ -26,7 +26,7 @@
           </v-col>
         </v-row>
         <v-row class="d-flex justify-center mt-4">
-          <v-btn color="#01b0b6" @click="editarAluno">Salvar</v-btn>
+          <v-btn color="#01b0b6" @click="editStudent">Salvar</v-btn>
           <v-btn color="#01b0b6" @click="backHome" class="ml-2">Cancelar</v-btn>
         </v-row>
       </v-card-text>
@@ -61,7 +61,7 @@ export default {
     backHome() {
       this.$router.push({ name: "AcademicModule" });
     },
-    async editarAluno() {
+    async editStudent() {
             const studentData = {
                 Name: this.nome,
                 RA: this.ra,

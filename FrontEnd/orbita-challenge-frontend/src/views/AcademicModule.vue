@@ -13,7 +13,7 @@
                 </v-text-field>
               </v-col>
               <v-col cols="2">
-                <v-btn color="#01b0b6" block @click="pesquisar">Pesquisar</v-btn>
+                <v-btn color="#01b0b6" block @click="searchStudent">Pesquisar</v-btn>
               </v-col>
               <v-col cols="2">
                 <v-btn color="#01b0b6" block @click="createStudent">Cadastrar</v-btn>
@@ -35,7 +35,7 @@
                 <!-- <v-btn small text color="primary" @click="editarAluno(item)">[Editar]</v-btn>
                   <v-btn small text color="error" @click="openConfirmationDialog(item)">[Excluir]</v-btn> -->
 
-                <v-btn small text color="#01b0b6" @click="editarAluno(item)">
+                <v-btn small text color="#01b0b6" @click="editStudent(item)">
                   <v-icon>fa fa-pencil-alt</v-icon> 
                 </v-btn>
 
@@ -107,7 +107,7 @@ export default {
       this.clickedStudent = student;
       this.dialog = true;
     },
-    editarAluno(student) {
+    editStudent(student) {
       this.$router.push({ name: 'EditStudent', params: { id: student.ra } });
     },
     async deleteStudent(student) {
@@ -131,7 +131,7 @@ export default {
         this.snackbarVisible = true;
       }
     },
-    async pesquisar() {
+    async searchStudent() {
       if (this.search) {
         try {
           const response = await searchStudents(this.search);
