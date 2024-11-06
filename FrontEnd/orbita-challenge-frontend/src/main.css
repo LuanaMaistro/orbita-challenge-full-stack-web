@@ -1,0 +1,19 @@
+/* src/assets/global.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  #app {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
