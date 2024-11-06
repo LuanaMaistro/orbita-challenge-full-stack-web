@@ -41,20 +41,16 @@
           </template>
         </v-data-table>
 
-        <!-- Diálogo de Confirmação -->
-        <v-dialog v-model="dialog" max-width="400">
-          <v-card>
-            <v-card-title class="headline">Confirmar Exclusão</v-card-title>
-            <v-card-text>
-              Tem certeza que deseja excluir o aluno com o RA: {{ clickedStudent.ra }}?
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="grey" text @click="dialog = false">Cancelar</v-btn>
-              <v-btn color="red" text @click="deleteStudent(clickedStudent.ra)">Excluir</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+        <ConfirmationDialog
+          :student="clickedStudent"
+          :visible="dialog"
+          :title="'Confirmar Exclusão'"
+          :content="`Tem certeza que deseja excluir o aluno com o RA: ${clickedStudent?.ra}?`"
+          :cancelText="'Cancelar'"
+          :confirmText="'Excluir'"
+          @confirm="deleteStudent"
+          @close="dialog = false"
+        />
 
         <SnackBar v-model:visible="snackbarVisible" :message="snackbarMessage" :isSuccess="snackbarIsSuccess" />
 
@@ -67,12 +63,14 @@
 import { getAllStudents, searchStudents, deleteStudentByRA } from '@/api';
 import SnackBar from '@/components/SnackBar.vue';
 import LoggedLayout from '@/components/LoggedLayout.vue';
+import ConfirmationDialog from '@/components/ConfirmationDialog.vue';
 
 
 export default {
   components: {
     SnackBar,
-    LoggedLayout
+    LoggedLayout,
+    ConfirmationDialog
   },
   data() {
     return {
