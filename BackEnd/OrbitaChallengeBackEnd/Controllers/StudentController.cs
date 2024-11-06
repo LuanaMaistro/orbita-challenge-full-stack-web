@@ -26,60 +26,113 @@ namespace OrbitaChallengeBackEnd.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _studentRepository.GetAllAsync();
-            return Ok(result);
+            try
+            {
+                var result = await _studentRepository.GetAllAsync();
+
+                if (result.Success && result.Data != null)
+                    return Ok(result); 
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = "An error occurred while retrieving students.", Details = ex.Message });
+            }
         }
 
         // POST: api/students
         [HttpPost]
         public async Task<ActionResult> Add([FromBody] Student student)
         {
-            if (!ModelState.IsValid)
-            {       
-                return BadRequest(new ResultViewModel<bool>(false, "Invalid data provided."));
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(new { Message = "Invalid data provided."});
+                
+
+                var result = await _studentRepository.AddAsync(student);
+
+                if (result.Success)
+                    return Ok(result);                
+
+                return Ok(new { Message = result.Message, Details = result.Data });
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new { Message = "Error adding student.", Details = ex.Message });
             }
 
-            var result = await _studentRepository.AddAsync(student); 
-
-            return Ok(result);
         }
 
         // POST: Students/Edit
         [HttpPut]
         public async Task<ActionResult> Edit([FromBody] Student student)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new ResultViewModel<bool>(false, "Invalid data provided.")); 
-            }
 
-            var result = await _studentRepository.EditAsync(student); 
-            return Ok(result); 
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(new ResultViewModel<bool>(false, "Invalid data provided.")); 
+                
+                var result = await _studentRepository.EditAsync(student);
+
+                if (result.Success)
+                    return Ok(result);
+
+                return NoContent();
+
+            }
+            catch (Exception ex) {
+            
+                return BadRequest(new { Message = "An error occurred.", Details = ex.Message });
+
+            }
         }
 
         [HttpGet("search")]
         public async Task<ActionResult<ResultViewModel<Student>>> GetBy([FromQuery] string searchTerm)
         {
-            if (string.IsNullOrWhiteSpace(searchTerm))
+            try
             {
-                return BadRequest(new ResultViewModel<Student>(false, "Search term cannot be empty."));
-            }
+                 if (string.IsNullOrWhiteSpace(searchTerm))
+                     return BadRequest("Search term cannot be empty.");
+                 
+                 
+                var result = await _studentRepository.GetByAsync(searchTerm);
 
-            var result = await _studentRepository.GetByAsync(searchTerm);
-            if (!result.Success)
+                 if (!result.Success)
+                    return NotFound(result);
+                 
+
+                    return Ok(result);
+            }
+            catch(Exception ex) 
             {
-                return NotFound(result);
+              return BadRequest(new { Message = "An error occurred.", Details = ex.Message }); 
             }
-
-            return Ok(result);
         }
 
         // POST: Students/Delete
         [HttpPost("delete/{ra}")]
         public async Task<IActionResult> Delete(string ra)
         {
-            var result = await _studentRepository.DeleteAsync(ra); 
-            return Ok(result); 
+            try
+            {
+                var result = await _studentRepository.DeleteAsync(ra);
+                
+                if (!result.Success)
+                    return BadRequest(result);
+
+                return Ok(result); 
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = "An error occurred.", Details = ex.Message });
+
+            }
         }
     }
 }
