@@ -1,9 +1,7 @@
 <template>
   <LoggedLayout>
     <v-app>
-      <!-- Conteúdo Principal -->
       <v-col>
-        <!-- Barra de Pesquisa -->
         <v-card class="mb-4">
           <v-card-title>Consulta de alunos</v-card-title>
           <v-card-text>
@@ -22,18 +20,14 @@
           </v-card-text>
         </v-card>
 
-        <!-- Tabela de Alunos -->
         <v-data-table :items="alunos" :headers="headers" class="elevation-1">
 
-          <!-- Slot para o corpo da tabela -->
           <template v-slot:item="{ item }">
             <tr>
               <td>{{ item.ra }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.cpf }}</td>
               <td>
-                <!-- <v-btn small text color="primary" @click="editarAluno(item)">[Editar]</v-btn>
-                  <v-btn small text color="error" @click="openConfirmationDialog(item)">[Excluir]</v-btn> -->
 
                 <v-btn small text color="#01b0b6" @click="editStudent(item)">
                   <v-icon>fa fa-pencil-alt</v-icon> 
@@ -62,7 +56,6 @@
           </v-card>
         </v-dialog>
 
-        <!-- Snackbar para Mensagem de Sucesso -->
         <SnackBar v-model:visible="snackbarVisible" :message="snackbarMessage" :isSuccess="snackbarIsSuccess" />
 
       </v-col>
