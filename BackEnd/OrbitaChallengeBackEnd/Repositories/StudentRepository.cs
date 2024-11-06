@@ -175,5 +175,24 @@ namespace OrbitaChallengeBackEnd.Repositories;
             return new ResultViewModel<bool>(false, "Error deleting student");
         }
     }
+
+    public async Task<ResultViewModel<Student>> GetByRAAsync(string RA)
+    {
+        try
+        {
+            var student = await _context.Students
+                .Where(s => s.RA == RA).FirstOrDefaultAsync();
+
+            return new ResultViewModel<Student>(true,
+                student is not null ? "Student found." : "No student found.",
+                student);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error fetching student.");
+            return new ResultViewModel<Student>(false, "Error fetching student.");
+        }
+    }
+
 }
 

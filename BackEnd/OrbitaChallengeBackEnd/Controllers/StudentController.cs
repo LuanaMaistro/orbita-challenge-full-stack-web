@@ -134,5 +134,28 @@ namespace OrbitaChallengeBackEnd.Controllers
 
             }
         }
+
+        [HttpGet("GetByRA/{ra}")]
+        public async Task<ActionResult> GetByRA(string RA)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(RA))
+                    return BadRequest("RA cannot be empty.");
+
+
+                var result = await _studentRepository.GetByRAAsync(RA);
+
+                if (!result.Success)
+                    return NotFound(result);
+
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = "An error occurred.", Details = ex.Message });
+            }
+        }
     }
 }

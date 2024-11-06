@@ -9,5 +9,7 @@ namespace OrbitaChallengeBackEnd.Interfaces;
     Task<ResultViewModel<bool>> DeleteAsync(string ra);
     Task<ResultViewModel<bool>> EditAsync(Student updatedStudent);
     Task<ResultViewModel<IEnumerable<Student>>> GetByAsync(string searchTerm);
+    Task<ResultViewModel<Student>> GetByRAAsync(string RA);
+
 }
 

@@ -59,6 +59,22 @@
   },
   {
     "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
+    "Method": "GetByRA",
+    "RelativePath": "api/Student/GetByRA/{ra}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RA",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
     "Method": "GetBy",
     "RelativePath": "api/Student/search",
     "HttpMethod": "GET",
