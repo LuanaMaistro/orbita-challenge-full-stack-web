@@ -1,7 +1,10 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using OrbitaChallengeBackEnd.Data;
 using OrbitaChallengeBackEnd.Interfaces;
 using OrbitaChallengeBackEnd.Repositories;
+using OrbitaChallengeBackEnd.Validator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +29,10 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddValidatorsFromAssemblyContaining<StudentValidator>();
 
 var app = builder.Build();
 app.UseSwagger();
@@ -54,6 +61,7 @@ app.MapControllers();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 
 
 app.MapControllerRoute(
