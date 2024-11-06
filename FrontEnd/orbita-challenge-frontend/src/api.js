@@ -18,6 +18,9 @@ export const searchStudents = (searchTerm) => {
 };
 export const deleteStudentByRA = (ra) => api.post(`/Student/delete/${ra}`);
 
+// Função para adicionar um estudante
+export const addStudent = (student) => api.post('/Student', student);
+
 
 // export const addAluno = (aluno) => api.post('/Student', aluno);
 // export const addAluno = (aluno) => api.post('/Student', aluno);

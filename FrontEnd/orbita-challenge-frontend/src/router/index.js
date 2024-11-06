@@ -17,7 +17,7 @@ const routes = [
     component: EditStudent,
   },
   {
-    path: '/AddStudent', // Rota para editar aluno
+    path: '/AddStudent', // Rota para adicionar aluno
     name: 'AddStudent',
     component: AddStudent,
   },

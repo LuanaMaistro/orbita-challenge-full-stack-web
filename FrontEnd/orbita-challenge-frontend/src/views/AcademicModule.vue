@@ -103,6 +103,10 @@ export default {
     };
   },
   methods: {
+    createStudent(){
+      this.$router.push({ name: 'AddStudent'});
+
+    },
     openConfirmationDialog(student) {
       this.clickedStudent = student;
       this.dialog = true;
