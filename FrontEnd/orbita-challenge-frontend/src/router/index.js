@@ -1,5 +1,3 @@
-// src/router/index.js
-
 import { createRouter, createWebHistory } from 'vue-router';
 import AcademicModule from '@/views/AcademicModule.vue';
 import EditStudent from '@/views/EditStudent.vue';
@@ -12,12 +10,12 @@ const routes = [
     component: AcademicModule,
   },
   {
-    path: '/edit/:id', // Rota para editar aluno
+    path: '/edit/:id', 
     name: 'EditStudent',
     component: EditStudent,
   },
   {
-    path: '/AddStudent', // Rota para adicionar aluno
+    path: '/AddStudent', 
     name: 'AddStudent',
     component: AddStudent,
   },

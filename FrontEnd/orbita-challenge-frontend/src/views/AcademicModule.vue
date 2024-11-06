@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { getAllStudents, searchStudents, deleteStudentByRA } from '@/api'; // ajuste o caminho conforme necessário
+import { getAllStudents, searchStudents, deleteStudentByRA } from '@/api';
 import SnackBar from '@/components/SnackBar.vue';
 import LoggedLayout from '@/components/LoggedLayout.vue';
 
@@ -85,7 +85,6 @@ export default {
     return {
       search: '',
       alunos: [],
-      // Definindo os cabeçalhos desejados
       headers: [
         { title: 'Registro Acadêmico', key: 'ra' },
         { title: 'Nome', key: 'name' },
@@ -109,7 +108,6 @@ export default {
       this.dialog = true;
     },
     editarAluno(student) {
-      // Redireciona para a tela de edição do aluno, passando o ID
       this.$router.push({ name: 'EditStudent', params: { id: student.ra } });
     },
     async deleteStudent(student) {
@@ -119,8 +117,8 @@ export default {
         if (response.data.success) {
           this.snackbarMessage = response.data.message;
           this.snackbarVisible = true;
-          this.dialog = false; // Fecha o diálogo de confirmação
-          this.fetchStudents(); // Atualiza a lista de alunos após a exclusão
+          this.dialog = false; 
+          this.fetchStudents(); 
         }
         else {
           this.snackbarMessage = response.data.message;
@@ -167,7 +165,7 @@ export default {
       } catch (error) {
         this.snackbarMessage = error;
         this.snackbarIsSuccess = false
-        this.snackbarVisible = true; // Abre o snackbar
+        this.snackbarVisible = true; 
       }
     },
   },

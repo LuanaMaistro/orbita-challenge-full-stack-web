@@ -55,7 +55,6 @@ export default {
     };
   },
   mounted() {
-    // Chama a função para obter os dados do aluno ao montar o componente
     this.getStudentByRA();
   },
   methods: {
@@ -63,7 +62,6 @@ export default {
       this.$router.push({ name: "AcademicModule" });
     },
     async editarAluno() {
-            // Dados capturados dos campos de entrada
             const studentData = {
                 Name: this.nome,
                 RA: this.ra,

@@ -62,7 +62,6 @@ export default {
             this.$router.push({ name: "AcademicModule" });
         },
         async saveStudent() {
-            // Dados capturados dos campos de entrada
             const studentData = {
                 Name: this.nome,
                 RA: this.ra,
