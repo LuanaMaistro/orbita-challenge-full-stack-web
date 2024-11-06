@@ -1,6 +1,6 @@
 <template>
     <v-app>
-      <v-container fluid class="background-red">
+      <v-container fluid class="background-color">
         <v-row>
           <!-- Menu lateral fixo -->
           <v-col cols="3">
@@ -14,7 +14,7 @@
   
                 <!-- Título do módulo -->
                 <v-list-item>
-                  <v-list-item-title class="text-h6 font-weight-bold">Módulo Acadêmico</v-list-item-title>
+                  <v-list-item-title class="text-h6 font-weight-bold title-logged-layout">Módulo Acadêmico</v-list-item-title>
                 </v-list-item>
   
                 <!-- Menu Alunos -->
@@ -42,12 +42,15 @@
   </script>
   
   <style scoped>
+  .title-logged-layout {
+    color: #01b0b6
+  }
   .v-navigation-drawer {
     border-right: 1px solid #ccc;
   }
   
-  .background-red {
-    background-color: rgba(255, 0, 0, 0.1);
+  .background-color{
+    background-color: #dcdcdc;
     min-height: 100vh;
   }
   
@@ -58,6 +61,7 @@
   
   .menu-title {
     font-weight: bold;
+    color:#ff203b
   }
   
   .menu-item:hover {

@@ -26,8 +26,8 @@
           </v-col>
         </v-row>
         <v-row class="d-flex justify-center mt-4">
-          <v-btn color="primary" @click="editarAluno">Salvar</v-btn>
-          <v-btn color="primary" @click="backHome" class="ml-2">Cancelar</v-btn>
+          <v-btn color="#01b0b6" @click="editarAluno">Salvar</v-btn>
+          <v-btn color="#01b0b6" @click="backHome" class="ml-2">Cancelar</v-btn>
         </v-row>
       </v-card-text>
     </v-card>
