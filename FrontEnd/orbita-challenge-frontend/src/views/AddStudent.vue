@@ -75,6 +75,7 @@ export default {
                 if (response.data.success) {
                     this.snackbarMessage = response.data.message;
                     this.snackbarVisible = true;
+                    this.snackbarIsSuccess = true;
 
                     setTimeout(() => {
                         this.$router.push({ name: "AcademicModule" });
