@@ -66,7 +66,7 @@ namespace OrbitaChallengeBackEnd.Controllers
         }
 
         // POST: Students/Edit
-        [HttpPut]
+        [HttpPost("edit")]
         public async Task<ActionResult> Edit([FromBody] Student student)
         {
 
@@ -80,7 +80,7 @@ namespace OrbitaChallengeBackEnd.Controllers
                 if (result.Success)
                     return Ok(result);
 
-                return NoContent();
+                return Ok(result);
 
             }
             catch (Exception ex) {

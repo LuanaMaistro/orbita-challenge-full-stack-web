@@ -27,22 +27,6 @@
   },
   {
     "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
-    "Method": "Edit",
-    "RelativePath": "api/Student",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "student",
-        "Type": "OrbitaChallengeBackEnd.Models.Student",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
     "Method": "Delete",
     "RelativePath": "api/Student/delete/{ra}",
     "HttpMethod": "POST",
@@ -52,6 +36,22 @@
       {
         "Name": "ra",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrbitaChallengeBackEnd.Controllers.StudentController",
+    "Method": "Edit",
+    "RelativePath": "api/Student/edit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student",
+        "Type": "OrbitaChallengeBackEnd.Models.Student",
         "IsRequired": true
       }
     ],

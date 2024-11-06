@@ -70,7 +70,6 @@ export default {
             };
 
             try {
-                // Enviando os dados ao backend usando a função `addStudent`
                 const response = await addStudent(studentData);
                 if (response.data.success) {
                     this.snackbarMessage = response.data.message;
@@ -88,19 +87,12 @@ export default {
                 }
             } catch (error) {
                 if (error.response && error.response.data.errors) {
-                    // Acesse os erros do backend
                     const validationErrors = error.response.data.errors;
-                    // Você pode querer exibir os erros de forma personalizada, aqui estamos apenas pegando o primeiro erro
                     const firstErrorMessage = Object.values(validationErrors)[0][0];
-                    console.log('Erro de validação:', firstErrorMessage);
-
-                    // Exibe a primeira mensagem de erro no snackbar
                     this.snackbarMessage = firstErrorMessage;
-                    this.snackbarIsSuccess = false;  // Indica que é um erro
-                    this.snackbarVisible = true;     // Exibe o snackbar
+                    this.snackbarIsSuccess = false;  
+                    this.snackbarVisible = true;    
                 } else {
-                    // Se não for um erro de validação, apenas exibe o erro genérico
-                    console.log('Erro geral:', error);
                     this.snackbarMessage = 'Ocorreu um erro ao salvar os dados.';
                     this.snackbarIsSuccess = false;
                     this.snackbarVisible = true;

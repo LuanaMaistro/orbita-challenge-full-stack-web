@@ -7,13 +7,11 @@ const api = axios.create({
   },
 });
 
-//buscar todos os estudantes
 export const getAllStudents = () => api.get('/Student');
 
-//Buscar estudantes por pesquisa
 export const searchStudents = (searchTerm) => {
   return api.get('/Student/search', {
-    params: { searchTerm }, // Passa o parâmetro de busca
+    params: { searchTerm },
   });
 };
 export const deleteStudentByRA = (ra) => api.post(`/Student/delete/${ra}`);
@@ -22,7 +20,13 @@ export const deleteStudentByRA = (ra) => api.post(`/Student/delete/${ra}`);
 export const addStudent = (student) => api.post('/Student', student);
 
 
-// export const addAluno = (aluno) => api.post('/Student', aluno);
-// export const addAluno = (aluno) => api.post('/Student', aluno);
-// export const updateAluno = (aluno) => api.put(`/alunos/${aluno.id}`, aluno);
+export const getStudentByRA = (ra) => api.get(`/Student/GetByRA/${ra}`);
+
+export const editStudent = (student) => api.post('/Student/edit', student);
+
+
+// export const getStudentByRA = (ra) => api.get(`/Student/GetByRA/${ra}`);
+
+
+
 
