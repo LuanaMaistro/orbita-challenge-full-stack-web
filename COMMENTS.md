@@ -50,4 +50,13 @@ O projeto segue uma arquitetura modular, facilitando a manutenção e escalabili
 
 Para o projeto escolhi seguir os padrões de commit do [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits) para deixar o histórico bem organizado e fácil de entender. 
 
-Cada commit tem uma tag específica, como `feat` para novas funcionalidades ou `fix` para correções, além de uma descrição clara sobre o que foi feito, facilitando qualquer pessoa acompanhar as mudanças e entender a evolução do projeto
+Cada commit tem uma tag específica, como `feat` para novas funcionalidades ou `fix` para correções, além de uma descrição clara sobre o que foi feito, facilitando qualquer pessoa acompanhar as mudanças e entender a evolução do projeto.
+
+# Imagens 
+![Swagger](https://github.com/user-attachments/assets/23a05503-1db1-4445-880e-13c57a7e392f)
+
+![StudentRegistration](https://github.com/user-attachments/assets/de09a7b9-9f6b-46a2-9a53-f8ead4359ed1)
+
+![AddStudent](https://github.com/user-attachments/assets/b183842c-82ab-4ef1-9fe7-46e93b3ab13c)
+
+![EditStudent](https://github.com/user-attachments/assets/1988a437-15a8-47a0-ac3e-e7a6018565be)
